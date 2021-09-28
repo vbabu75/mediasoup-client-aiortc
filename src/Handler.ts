@@ -262,7 +262,7 @@ export class Handler extends HandlerInterface
 		}
 
 		const sendingRtpParameters =
-			utils.clone(this._sendingRtpParametersByKind[track.kind]);
+			utils.clone(this._sendingRtpParametersByKind[track.kind],null);
 
 		// This may throw.
 		sendingRtpParameters.codecs =
@@ -529,7 +529,7 @@ export class Handler extends HandlerInterface
 			maxRetransmits,
 			label,
 			protocol,
-			priority // eslint-disable-line @typescript-eslint/no-unused-vars
+			//priority // eslint-disable-line @typescript-eslint/no-unused-vars
 		}: HandlerSendDataChannelOptions
 	): Promise<HandlerSendDataChannelResult>
 	{
@@ -757,6 +757,23 @@ export class Handler extends HandlerInterface
 			this._internal,
 			answer as RTCSessionDescription);
 	}
+
+  async pauseReceiving(localId: string): Promise<void>
+  {
+    logger.debug(
+      'pauseReceiving received. Does not have implementation'
+    )
+    return;
+  }
+
+  async resumeReceiving(localId: string): Promise<void>
+  {
+    logger.debug(
+      'resumeReceiving received. Does not have implementation'
+    )
+    return;
+  }
+
 
 	async getReceiverStats(localId: string): Promise<FakeRTCStatsReport>
 	{
